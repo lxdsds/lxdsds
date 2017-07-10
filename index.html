@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动菜单</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<script type="text/javascript">
+         window.onscroll=function(){
+         	var top=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop;
+         	var dhl=document.getElementById('nav');
+         	if (top>500) {
+                dhl.style.position="fixed";
+                dhl.style.top="0";
+                dhl.style.zindex="20";
+         	}else{
+         		dhl.style.position="static";
+         	}
+         }
+	</script>
+	<script>
+        $(function(){   
+    var winHeight = $(document).scrollTop();
+ 
+    $(window).scroll(function() {
+        var scrollY = $(document).scrollTop();// 获取垂直滚动的距离，即滚动了多少
+ 
+        if (scrollY > 550){ //如果滚动距离大于550px则隐藏，否则删除隐藏类
+            $('.top-title').addClass('hiddened');
+        } 
+        else {
+            $('.top-title').removeClass('hiddened');
+        }
+ 
+        if (scrollY > winHeight){ //如果没滚动到顶部，删除显示类，否则添加显示类
+            $('.top-title').removeClass('showed');
+        } 
+        else {
+            $('.top-title').addClass('showed');
+        }               
+ 
+     });
+});
+	</script>
+	<style>
+        #nav{
+        	width: 100%;
+        	height: 40px;
+        	background: #eee;
+        }
+        .main{
+        	width: 1000px;
+        	height: 2000px;
+        	background: #ddd;
+        	margin: 0 auto;
+        }
+	</style>
+</head>
+<body>
+	<div id="nav"></div>
+	<div class="main"></div>
+</body>
+</html>
